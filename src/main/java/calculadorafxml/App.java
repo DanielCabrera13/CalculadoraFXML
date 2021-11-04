@@ -13,7 +13,7 @@ public class App extends Application {
 		
 		calculadoraController = new CalculadoraController();
 		
-Scene scene = new Scene(calculadoraController.getView());
+		Scene scene = new Scene(calculadoraController.getView());
 		
 		primaryStage.setTitle("Calculadora");
 		primaryStage.setScene(scene);

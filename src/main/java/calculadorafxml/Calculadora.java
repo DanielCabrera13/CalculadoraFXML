@@ -1,6 +1,5 @@
 package calculadorafxml;
 
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -24,10 +23,15 @@ public class Calculadora {
 	private Boolean nuevoOperando;
 	private String pantalla;
 	
-	//private StringProperty pantallaProperty;
+	private StringProperty resultado = new SimpleStringProperty();
+	
 	
 	public Calculadora() {
 		borrar();
+	}
+	
+	public StringProperty getResultado() {
+		return resultado;
 	}
 
 	/**
@@ -55,6 +59,7 @@ public class Calculadora {
 	public void borrarTodo() {
 		nuevoOperando = true;
 		pantalla = "0.0";
+		resultado.set(pantalla);
 	}
 
 	/**
@@ -85,6 +90,7 @@ public class Calculadora {
 		}
 		this.operador = operador;
 		pantalla = "" + operando ;
+		resultado.set(pantalla);
 	}
 
 	/**
@@ -93,6 +99,7 @@ public class Calculadora {
 	public void insertarComa() {
 		if (!pantalla.contains("" + COMA)) {
 			pantalla += COMA;
+			resultado.set(pantalla);
 		}
 	}
 
@@ -106,8 +113,10 @@ public class Calculadora {
 			if (nuevoOperando) {
 				nuevoOperando = false;
 				pantalla = "";
+				resultado.set(pantalla);
 			}
 			pantalla += digito;
+			resultado.set(pantalla);
 		} else if (digito == COMA) {
 			insertarComa();
 		}

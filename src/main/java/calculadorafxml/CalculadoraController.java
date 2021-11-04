@@ -20,11 +20,9 @@ import javafx.scene.layout.GridPane;
 public class CalculadoraController implements Initializable {
 		
 		//MODEL
+		Calculadora c = new Calculadora();
 		
-		ObjectProperty<Calculadora> calcu = new SimpleObjectProperty<>();
-		StringProperty result = new SimpleStringProperty();
 		
-	
 		//VIEW
 	
 	  	@FXML
@@ -98,14 +96,14 @@ public class CalculadoraController implements Initializable {
 		
 		
 		//BINDINGS
-		resultadoText.textProperty().bind(result);
+		
+		resultadoText.textProperty().bind(c.getResultado());
+		
 	}
 	
 	public void onPulsarAction(ActionEvent e) {
 		
 		String nombreButton = ((Button) e.getSource()).getText();
-		//Calculadora c = new Calculadora();
-		
 		switch (nombreButton) {
 		case "0": 
 			c.insertar('0');
@@ -155,17 +153,15 @@ public class CalculadoraController implements Initializable {
 		case "=": 
 			c.operar(Calculadora.IGUAL);
 			break;
-		case "C": 
+		case "CE": 
 			c.borrar();
 			break;
-		case "CE": 
+		case "C": 
 			c.borrarTodo();
 			break;
 		default:
 			break;
 		}
-		result.bind(Bindings.concat(c.getPantalla()));
-		
 	}
 	
 	public GridPane getView() {
