@@ -14,6 +14,7 @@ public class App extends Application {
 		calculadoraController = new CalculadoraController();
 		
 		Scene scene = new Scene(calculadoraController.getView());
+		scene.getStylesheets().add("/css/modern.css");
 		
 		primaryStage.setTitle("Calculadora");
 		primaryStage.setScene(scene);
