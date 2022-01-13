@@ -3,11 +3,13 @@
 	-fx-font-family: monospace;
 	-fx-hgap: 1px;
 	-fx-vgap: 1px;
+	-fx-padding: 0px;
 }
 
 #resultadoText {
 	-fx-text-fill: lightgrey;
 	-fx-text-alignment: right;
+	-fx-font-family: monospace;
 	-fx-font-size: 25pt;
 	-fx-font-weight: bold;
 	-fx-padding: 10px;
@@ -31,7 +33,7 @@
 
 .number-button {
 	-fx-text-fill: white;
-	-fx-background-color: #333333;
+	-fx-background-color: grey;
 }
 
 .number-button:hover {
