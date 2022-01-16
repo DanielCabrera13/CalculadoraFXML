@@ -4,16 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javafx.beans.binding.Bindings;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -21,7 +19,6 @@ public class CalculadoraController implements Initializable {
 		
 		//MODEL
 		Calculadora c = new Calculadora();
-		
 		
 		//VIEW
 	
@@ -93,6 +90,26 @@ public class CalculadoraController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		MenuItem clasicoItem = new MenuItem("Clásico");
+		clasicoItem.setOnAction(e -> {
+			System.out.println("Tema clásico seleccionado");
+			root.getStylesheets().remove(0, root.getStylesheets().size());
+			root.getStylesheets().add("/css/classic.css");
+		});
+		
+		MenuItem modernoItem = new MenuItem("Moderno");
+		modernoItem.setOnAction(e -> {
+			System.out.println("Tema moderno seleccionado");
+			root.getStylesheets().remove(0, root.getStylesheets().size());
+			root.getStylesheets().add("/css/modern.css");
+		});
+		
+		ContextMenu menu = new ContextMenu(clasicoItem, modernoItem);
+		
+		root.setOnContextMenuRequested(e -> {
+			menu.show(root, e.getScreenX(), e.getScreenY());
+		});
 		
 		
 		//BINDINGS
