@@ -91,18 +91,18 @@ public class CalculadoraController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		root.getStylesheets().add("/css/modern.css");
+		
 		MenuItem clasicoItem = new MenuItem("Clásico");
 		clasicoItem.setOnAction(e -> {
 			System.out.println("Tema clásico seleccionado");
-			root.getStylesheets().remove(0, root.getStylesheets().size());
-			root.getStylesheets().add("/css/classic.css");
+			root.getStylesheets().setAll("/css/classic.css");
 		});
 		
 		MenuItem modernoItem = new MenuItem("Moderno");
 		modernoItem.setOnAction(e -> {
 			System.out.println("Tema moderno seleccionado");
-			root.getStylesheets().remove(0, root.getStylesheets().size());
-			root.getStylesheets().add("/css/modern.css");
+			root.getStylesheets().setAll("/css/modern.css");
 		});
 		
 		ContextMenu menu = new ContextMenu(clasicoItem, modernoItem);
